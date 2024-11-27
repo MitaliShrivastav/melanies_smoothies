@@ -20,8 +20,8 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 # st.stop()
 
 pd_df = my_dataframe.to_pandas()
-st.dataframe(pd_df)
-st.stop()
+# st.dataframe(pd_df)
+# st.stop()
 
 
 ingredients_list = st.multiselect(
@@ -40,8 +40,8 @@ if ingredients_list:
         # st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
         
         st.subheader(fruit_chosen + ' Nutrition Information')
-        fruityvice_response = requests.get("https://fruityvice_response.com/api/fruit" + search_on)
-        fv_df = st.dataframe(data=fuityvice_response.json(), use_container_width = True)
+        smoothiefruit_response = requests.get("https://smoothiefruit_response.com/api/fruit" + search_on)
+        sf_df = st.dataframe(data=smoothiefruit_response.json(), use_container_width = True)
  
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
             values ('""" + ingredients_string + """', '""" +name_on_order+ """')"""
